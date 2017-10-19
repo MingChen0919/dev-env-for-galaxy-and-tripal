@@ -32,12 +32,18 @@ sudo docker run -it --rm -p 8080:80 -p 8021:21 -p 8022:22  \
 
 ```
 planemo shed_create --shed_target toolshed
+
+# alias
+create-toolshed-repo
 ```
 
 * Update repository
 
 ```
-planemo shed_update --check_diff --shed_target toolshed
+planemo shed_update --check_diff --shed_target toolshed -m
+
+# alias
+update-toolshed-repo
 ```
 
 
@@ -48,10 +54,16 @@ planemo shed_update --check_diff --shed_target toolshed
 
 ```
 planemo shed_create --shed_target testtoolshed
+
+# alias
+create-toolshed-repo
 ```
 
 * Update repository
 
 ```
-planemo shed_update --check_diff --shed_target testtoolshed
+planemo shed_update --check_diff --shed_target testtoolshed -m
+
+# alias
+update-testtoolshed-repo
 ```
