@@ -40,7 +40,7 @@ docker run -it --rm --network=galaxy_tool_generator_nw --name=galaxy_instance \
         -v $(pwd)/shed_tools:/export/shed_tools \
         -e "ENABLE_TTS_INSTALL=True" \
         -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
-	    bgruening/galaxy-stable:17.01 /bin/bash
+        bgruening/galaxy-stable:17.01 /bin/bash
 ```
 
 
