@@ -18,8 +18,8 @@ mkdir shed_tools
 
 ``` 
 sudo docker run -it --rm -p 8080:80 -p 8021:21 -p 8022:22  \
-		-v $(pwd)/shed_tools:/export/shed_tools \
-    	-e "ENABLE_TTS_INSTALL=True" \
-    	-e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
-    	bgruening/galaxy-stable:17.01 /bin/bash
+    -v $(pwd)/shed_tools:/export/shed_tools \
+    -e "ENABLE_TTS_INSTALL=True" \
+    -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
+    bgruening/galaxy-stable:17.01 /bin/bash
 ```
