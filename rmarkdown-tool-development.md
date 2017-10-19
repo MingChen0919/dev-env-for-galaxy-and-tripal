@@ -39,3 +39,19 @@ planemo shed_create --shed_target toolshed
 ```
 planemo shed_update --check_diff --shed_target toolshed
 ```
+
+
+
+## Test Toolshed
+
+* Create a repository
+
+```
+planemo shed_create --shed_target testtoolshed
+```
+
+* Update repository
+
+```
+planemo shed_update --check_diff --shed_target testtoolshed
+```
