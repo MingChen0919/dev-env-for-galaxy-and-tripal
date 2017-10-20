@@ -32,12 +32,22 @@ docker network create --driver bridge tripal_galaxy_nw
 # create a directory to mount to the docker container's tool directory so that I can update or debug tools from the host machine
 mkdir shed_tools
  
+# option 1: use the base docker galaxy image created by Björn Grüning (https://github.com/bgruening/docker-galaxy-stable)
 docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
     -p 8080:80 -p 8021:21 -p 8800:8800 \
     -v $(pwd)/shed_tools:/export/shed_tools \ 
     -e "ENABLE_TTS_INSTALL=True" \
     -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
     bgruening/galaxy-stable:17.01 /bin/bash
+    
+    
+# option 2: use another docker image which has some tools installed
+docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
+    -p 8080:80 -p 8021:21 -p 8800:8800 \
+    -v $(pwd)/shed_tools:/export/shed_tools \ 
+    -e "ENABLE_TTS_INSTALL=True" \
+    -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
+    mingchen0919/docker-galaxy-for-tripal-galaxy-demo /bin/bash
 ```
 
 * Launch Tripal site
