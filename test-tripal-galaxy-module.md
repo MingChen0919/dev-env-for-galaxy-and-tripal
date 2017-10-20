@@ -33,11 +33,11 @@ docker network create --driver bridge tripal_galaxy_nw
 mkdir shed_tools
  
 docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
-        -p 8080:80 -p 8021:21 -p 8800:8800 \
-        -v $(pwd)/shed_tools:/export/shed_tools \ 
-		-e "ENABLE_TTS_INSTALL=True" \
-	    -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
-	    bgruening/galaxy-stable:17.01 /bin/bash
+    -p 8080:80 -p 8021:21 -p 8800:8800 \
+    -v $(pwd)/shed_tools:/export/shed_tools \ 
+    -e "ENABLE_TTS_INSTALL=True" \
+    -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
+    bgruening/galaxy-stable:17.01 /bin/bash
 ```
 
 * Launch Tripal site
@@ -45,6 +45,18 @@ docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
 ``` 
 sudo docker run -it --rm --network=tripal_galaxy_nw --name=tripal_site \
         -p 8090:80 mingchen0919/docker-tripal-v3 /bin/bash
+```
+
+* Install Tripal Galaxy module and library dependency
+
+``` 
+cd /var/www/html/sites/all/libraries
+git clone https://github.com/galaxyproject/blend4php.git
+
+cd /var/www/html/sites/all/modules
+mkdir -p tripal_extensions && cd tripal_extensions
+git clone https://github.com/tripal/tripal_galaxy.git
+drush en tripal_galaxy -y
 ```
 
 ## Obtain container IP address
