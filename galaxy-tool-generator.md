@@ -62,14 +62,6 @@ cd /var/www/html/sites/all/libraries/blend4php
 git pull
 ```
 
-
-* Install modules
-```
-cd /var/www/html/sites/all/modules/custom
-git clone https://github.com/MingChen0919/galaxy_tool_generator.git
-git clone https://github.com/MingChen0919/galaxy_tool_generator_ui.git
-```
-
 * Within the tripal site container, run the following command
 ```
 drush en -y galaxy_tool_generator galaxy_tool_generator_ui
