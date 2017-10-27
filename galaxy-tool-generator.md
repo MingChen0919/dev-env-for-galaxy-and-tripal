@@ -48,13 +48,29 @@ docker run -it --rm --network=galaxy_tool_generator_nw --name=galaxy_instance \
 
 ``` 
 cd galaxy-tool-generator
-sudo docker run -it -p 8090:80 --rm \
+docker run -it -p 8090:80 --rm \
             -v $(pwd)/galaxy_tools:/var/www/html/sites/default/files/galaxy_tools \
             -v $(pwd)/custom:/var/www/html/sites/all/modules/custom \
             -v ~/.planemo.yml:/root/.planemo.yml \
             mingchen0919/docker-galaxy-tool-generator '/bin/bash'
-            
-            
-# within the tripal site container, run the following command
+```            
+   
+* Pull updates for dependency library blend4php
+
+```
+cd /var/www/html/sites/all/libraries/blend4php
+git pull
+```
+
+
+* Install modules
+```
+cd /var/www/html/sites/all/modules/custom
+git clone https://github.com/MingChen0919/galaxy_tool_generator.git
+git clone https://github.com/MingChen0919/galaxy_tool_generator_ui.git
+```
+
+* Within the tripal site container, run the following command
+```
 drush en -y galaxy_tool_generator galaxy_tool_generator_ui
 ```
