@@ -29,7 +29,7 @@ docker network create --driver bridge galaxy_tool_generator_nw
 
 ## Launch containers on the created network.
 
-* Launch Galaxy instance
+### Launch Galaxy instance
 
 ```
 # create a directory to mount to the docker container's tool directory so that I can update or debug tools from the host machine
@@ -44,7 +44,7 @@ docker run -it --rm --network=galaxy_tool_generator_nw --name=galaxy_instance \
 ```
 
 
-* Launch Tripal site
+### Launch Tripal site
 
 ``` 
 cd galaxy-tool-generator
