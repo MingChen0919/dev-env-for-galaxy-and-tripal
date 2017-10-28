@@ -51,7 +51,6 @@ cd galaxy-tool-generator
 docker run -it -p 8090:80 --rm \
             -v $(pwd)/galaxy_tools:/var/www/html/sites/default/files/galaxy_tools \
             -v $(pwd)/custom:/var/www/html/sites/all/modules/custom \
-            -v ~/.planemo.yml:/root/.planemo.yml \
             mingchen0919/docker-galaxy-tool-generator '/bin/bash'
 ```            
    
