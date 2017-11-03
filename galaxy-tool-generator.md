@@ -48,7 +48,7 @@ docker run -it --rm --network=galaxy_tool_generator_nw --name=galaxy_instance \
 
 ``` 
 cd galaxy-tool-generator
-docker run -it -p 8090:80 --rm \
+docker run -it -p 8090:80 --rm --network=galaxy_tool_generator_nw \
             -v $(pwd)/galaxy_tools:/var/www/html/sites/default/files/galaxy_tools \
             -v $(pwd)/custom:/var/www/html/sites/all/modules/custom \
             mingchen0919/docker-galaxy-tool-generator '/bin/bash'
