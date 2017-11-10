@@ -1,0 +1,11 @@
+# Develop Drupal/Tripal modules
+
+```
+# create a directory to host custom modules
+mkdir -p ~/Desktop/custom && cd ~/Desktop/custom
+
+# launch a Tripal site
+docker run --rm -it -p 8080:80 \
+  -v custom:/var/www/http/sites/all/modules/custom \
+  mingchen0919/docker-tripal-v3 /bin/bash
+```
