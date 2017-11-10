@@ -1,11 +1,17 @@
 # Develop Drupal/Tripal modules
 
+**The internal apache needs to be stoped if we want to map the container port `80` to the host port `80`**
+
+```
+sudo apachectl stop
+```
+
 ```
 # create a directory to host custom modules
 mkdir -p ~/Desktop/custom && cd ~/Desktop/custom
 
 # launch a Tripal site
-docker run --rm -it -p 8080:80 \
+docker run --rm -it -p 80:80 \
   -v ~/Desktop/custom:/var/www/html/sites/all/modules/custom \
   mingchen0919/docker-tripal-v3 /bin/bash
 ```
