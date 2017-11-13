@@ -10,5 +10,5 @@ git clone https://github.com/tripal/tripal_analysis_expression.git
 ```
 docker run -it -p 80:80 --rm \
             -v $(pwd)/custom:/var/www/html/sites/all/modules/custom \
-            mingchen0919/docker-galaxy-tool-generator '/bin/bash'
+            bcondon/docker_tripal3 '/bin/bash'
 ```
