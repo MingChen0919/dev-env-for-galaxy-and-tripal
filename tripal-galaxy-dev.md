@@ -13,6 +13,8 @@ docker run -it --name=tripal-galaxy-dev \
         -v ~/Desktop/tripal-galaxy-dev/blend4php:/var/www/html/sites/all/libraries/blend4php \
         -p 80:80 mingchen0919/docker-tripal-v3 /bin/bash
 
+# enable tripal galaxy module
+drush en -y tripal_galaxy
 ```
 
 
