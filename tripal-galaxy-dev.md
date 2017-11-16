@@ -15,8 +15,11 @@ docker run -it --name=tripal-galaxy-dev \
 
 # enable tripal galaxy module
 drush en -y tripal_galaxy
-```
 
+# elasticsearch is not needed, so stop elasticsearch
+service elasticsearch_node-01 stop
+service elasticsearch_node-02 stop
+```
 
 # Edit `settings.php` file
 
