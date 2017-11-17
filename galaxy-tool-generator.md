@@ -36,7 +36,7 @@ docker network create --driver bridge galaxy_tool_generator_nw
 mkdir shed_tools
  
 docker run -it --rm --network=galaxy_tool_generator_nw --name=galaxy_instance \
-        -p 8080:80 -p 8021:21 -p 8800:8800 \
+        -p 8080:80 -p 8021:21 -p 8022:22 \
         -v $(pwd)/shed_tools:/export/shed_tools \
         -e "ENABLE_TTS_INSTALL=True" \
         -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
