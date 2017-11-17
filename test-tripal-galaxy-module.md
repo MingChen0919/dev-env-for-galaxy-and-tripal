@@ -6,9 +6,13 @@ and remove everything from the local computer.
 
 
 ``` 
-cd ~/Desktop
-mkdir test-tripal-galaxy
-cd test-tripal-galaxy
+mkdir -p ~/Desktop/test-tripal-galaxy && cd ~/Desktop/test-tripal-galaxy
+
+git clone https://github.com/galaxyproject/blend4php.git
+git clone https://github.com/tripal/tripal_galaxy.git
+
+# create a directory to mount to the docker container's tool directory so that I can update or debug tools from the host machine
+mkdir shed_tools
 ```
 
 # Docker container network
@@ -26,12 +30,20 @@ docker network create --driver bridge tripal_galaxy_nw
 
 ## Launch containers on the created network.
 
+* Launch Tripal site
+
+``` 
+sudo docker run -it --rm --network=tripal_galaxy_nw --name=tripal_site \
+        -v $(pwd)/blend4php:/var/www/html/sites/all/libraries \
+        -v $(pwd)/tripal_galaxy:/var/www/html/sites/all/modules/tripal_galaxy \
+        -p 80:80 mingchen0919/docker-tripal-v3 /bin/bash
+        
+drush en tripal_galaxy -y
+```
+
 * Launch Galaxy instance
 
 ```
-# create a directory to mount to the docker container's tool directory so that I can update or debug tools from the host machine
-mkdir shed_tools
- 
 # option 1: use the base docker galaxy image created by Björn Grüning (https://github.com/bgruening/docker-galaxy-stable)
 docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
     -p 8080:80 -p 8021:21 -p 8022:22 \
@@ -48,25 +60,6 @@ docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
     -e "ENABLE_TTS_INSTALL=True" \
     -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
     mingchen0919/docker-galaxy-for-tripal-galaxy-demo /bin/bash
-```
-
-* Launch Tripal site
-
-``` 
-sudo docker run -it --rm --network=tripal_galaxy_nw --name=tripal_site \
-        -p 8090:80 mingchen0919/docker-tripal-v3 /bin/bash
-```
-
-* Install Tripal Galaxy module and library dependency
-
-``` 
-cd /var/www/html/sites/all/libraries
-git clone https://github.com/galaxyproject/blend4php.git
-
-cd /var/www/html/sites/all/modules
-mkdir -p tripal_extensions && cd tripal_extensions
-git clone https://github.com/tripal/tripal_galaxy.git
-drush en tripal_galaxy -y
 ```
 
 ## Obtain container IP address
