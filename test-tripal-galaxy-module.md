@@ -34,7 +34,7 @@ mkdir shed_tools
  
 # option 1: use the base docker galaxy image created by Björn Grüning (https://github.com/bgruening/docker-galaxy-stable)
 docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
-    -p 8080:80 -p 8021:21 -p 8800:8800 \
+    -p 8080:80 -p 8021:21 -p 8022:22 \
     -v $(pwd)/shed_tools:/export/shed_tools \ 
     -e "ENABLE_TTS_INSTALL=True" \
     -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
@@ -44,7 +44,7 @@ docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
 # option 2: use another docker image which has some tools installed
 # DO NOT mount to the /export/shed_tools directory since it is not empty!
 docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
-    -p 8080:80 -p 8021:21 -p 8800:8800 \ 
+    -p 8080:80 -p 8021:21 -p 8022:22 \ 
     -e "ENABLE_TTS_INSTALL=True" \
     -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
     mingchen0919/docker-galaxy-for-tripal-galaxy-demo /bin/bash
