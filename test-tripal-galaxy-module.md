@@ -33,7 +33,7 @@ docker network create --driver bridge tripal_galaxy_nw
 * Launch Tripal site
 
 ``` 
-sudo docker run -it --rm --network=tripal_galaxy_nw --name=tripal_site \
+docker run -it --rm --network=tripal_galaxy_nw --name=tripal_site \
         -v $(pwd)/blend4php:/var/www/html/sites/all/libraries \
         -v $(pwd)/tripal_galaxy:/var/www/html/sites/all/modules/tripal_galaxy \
         -p 80:80 mingchen0919/docker-tripal-v3 /bin/bash
