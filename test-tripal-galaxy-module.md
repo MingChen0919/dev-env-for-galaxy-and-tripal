@@ -39,6 +39,10 @@ docker run -it --rm --network=tripal_galaxy_nw --name=tripal_site \
         -p 80:80 mingchen0919/docker-tripal-v3 /bin/bash
         
 drush en tripal_galaxy -y
+
+# elasticsearch is not needed, so stop elasticsearch
+service elasticsearch_node-01 stop
+service elasticsearch_node-02 stop
 ```
 
 * Launch Galaxy instance
