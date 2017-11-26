@@ -18,3 +18,7 @@ docker run -it --rm --name=galaxy_instance \
     -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
     mingchen0919/docker-tripal-galaxy /bin/bash
 ```
+
+```
+docker commit CONTAINER_ID  mingchen0919/docker-tripal-galaxy
+```
