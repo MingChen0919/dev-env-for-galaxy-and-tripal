@@ -24,7 +24,6 @@ docker network create --driver bridge galaxy_tool_generator_nw
 ### Launch Tripal site
 
 ``` 
-cd galaxy-tool-generator
 docker run -it -p 8090:80 --rm --network=galaxy_tool_generator_nw \
             -v $(pwd)/galaxy_tools:/var/www/html/sites/default/files/galaxy_tools \
             -v $(pwd)/galaxy_tool_generator:/var/www/html/sites/all/modules/galaxy_tool_generator \
