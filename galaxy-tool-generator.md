@@ -1,18 +1,10 @@
 # Create temporary working directory
 
 ``` 
-cd ~/Desktop
-mkdir galaxy-tool-generator
-cd galaxy-tool-generator
-```
-
-# Clone repositories
-
-```
-mkdir galaxy_tools 
-mkdir custom
-git clone https://github.com/MingChen0919/galaxy_tool_generator.git custom/galaxy_tool_generator
-git clone https://github.com/MingChen0919/galaxy_tool_generator_ui.git custom/galaxy_tool_generator_ui
+mkdir -p ~/Desktop/galaxy-tool-generator-dev && cd ~/Desktop/galaxy-tool-generator-dev
+git clone https://github.com/MingChen0919/galaxy_tool_generator.git
+git clone https://github.com/MingChen0919/galaxy_tool_generator_ui.git
+git clone https://github.com/galaxyproject/blend4php.git
 ```
 
 # Docker container network
@@ -27,7 +19,30 @@ for a Tripal site and the other is for a Galaxy instance.
 docker network create --driver bridge galaxy_tool_generator_nw
 ```
 
-## Launch containers on the created network.
+## Launch containers within the created network.
+
+### Launch Tripal site
+
+``` 
+cd galaxy-tool-generator
+docker run -it -p 8090:80 --rm --network=galaxy_tool_generator_nw \
+            -v $(pwd)/galaxy_tools:/var/www/html/sites/default/files/galaxy_tools \
+            -v $(pwd)/galaxy_tool_generator:/var/www/html/sites/all/modules/galaxy_tool_generator \
+            -v $(pwd)/galaxy_tool_generator_ui:/var/www/html/sites/all/modules/galaxy_tool_generator_ui \
+            -v $(pwd/blend4php):/var/www/html/sites/all/libraries/blend4php \
+            mingchen0919/docker-galaxy-tool-generator '/bin/bash'
+            
+# elasticsearch is not needed, so stop elasticsearch
+service elasticsearch_node-01 stop
+service elasticsearch_node-02 stop
+```            
+
+
+* Within the tripal site container, run the following command
+```
+drush en -y galaxy_tool_generator galaxy_tool_generator_ui
+```
+
 
 ### Launch Galaxy instance
 
@@ -44,24 +59,4 @@ docker run -it --rm --network=galaxy_tool_generator_nw --name=galaxy_instance \
 ```
 
 
-### Launch Tripal site
 
-``` 
-cd galaxy-tool-generator
-docker run -it -p 8090:80 --rm --network=galaxy_tool_generator_nw \
-            -v $(pwd)/galaxy_tools:/var/www/html/sites/default/files/galaxy_tools \
-            -v $(pwd)/custom:/var/www/html/sites/all/modules/custom \
-            mingchen0919/docker-galaxy-tool-generator '/bin/bash'
-```            
-   
-* Pull updates for dependency library blend4php
-
-```
-cd /var/www/html/sites/all/libraries/blend4php
-git pull
-```
-
-* Within the tripal site container, run the following command
-```
-drush en -y galaxy_tool_generator galaxy_tool_generator_ui
-```
