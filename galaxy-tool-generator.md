@@ -30,17 +30,10 @@ docker run -it -p 8080:80 --rm --network=galaxy_tool_generator_nw \
             -v $(pwd)/galaxy_tool_generator_ui:/var/www/html/sites/all/modules/galaxy_tool_generator_ui \
             -v $(pwd)/blend4php:/var/www/html/sites/all/libraries/blend4php \
             mingchen0919/docker-galaxy-tool-generator '/bin/bash'
-            
-# elasticsearch is not needed, so stop elasticsearch
-service elasticsearch_node-01 stop
-service elasticsearch_node-02 stop
+   
+drush en -y galaxy_tool_generator galaxy_tool_generator_ui
 ```            
 
-
-* Within the tripal site container, run the following command
-```
-drush en -y galaxy_tool_generator galaxy_tool_generator_ui
-```
 
 
 ### Launch Galaxy instance
