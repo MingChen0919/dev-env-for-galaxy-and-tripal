@@ -2,8 +2,8 @@
 
 ```
 mkdir -p ~/Desktop/singularity-images && cd ~/Desktop/singularity-images
-docker run -it \
-  -v singularity-images:/home/singularity-images \
+docker run -it --privileged \
+  -v ~/Desktop/singularity-images:/home/singularity-images \
   mingchen0919/docker-singularity
 ```
 
