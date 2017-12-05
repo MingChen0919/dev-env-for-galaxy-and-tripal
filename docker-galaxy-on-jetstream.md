@@ -7,7 +7,7 @@ Set up a Galaxy instance on Jetstream to test which tools can be installed direc
 sudo su
 
 # launch a galaxy container
-docker run -it --rm --name=galaxy_instance \
+docker run -it --name=galaxy_instance \
     -p 80:80 -p 8021:21 -p 8022:22 \
     -e "ENABLE_TTS_INSTALL=True" \
     -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
