@@ -25,7 +25,7 @@ docker network create --driver bridge galaxy_tool_generator_nw
 
 ``` 
 docker run -it -p 8080:80 --rm --network=galaxy_tool_generator_nw \
-            -v $(pwd)/galaxy_tools:/var/www/html/sites/default/files/galaxy_tools \
+            -v $(pwd)/galaxy_tool_repository:/var/www/html/sites/default/files/galaxy_tool_repository \
             -v $(pwd)/galaxy_tool_generator:/var/www/html/sites/all/modules/galaxy_tool_generator \
             -v $(pwd)/galaxy_tool_generator_ui:/var/www/html/sites/all/modules/galaxy_tool_generator_ui \
             -v $(pwd)/blend4php:/var/www/html/sites/all/libraries/blend4php \
