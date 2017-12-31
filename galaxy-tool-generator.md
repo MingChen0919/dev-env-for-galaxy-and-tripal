@@ -4,7 +4,7 @@
 mkdir -p ~/Desktop/galaxy-tool-generator-dev && cd ~/Desktop/galaxy-tool-generator-dev
 git clone https://github.com/MingChen0919/galaxy_tool_generator.git
 git clone https://github.com/MingChen0919/galaxy_tool_generator_ui.git
-git clone https://github.com/galaxyproject/blend4php.git
+# git clone https://github.com/galaxyproject/blend4php.git
 ```
 
 # Docker container network
@@ -28,8 +28,7 @@ docker run -it -p 8080:80 --rm --network=galaxy_tool_generator_nw \
             -v $(pwd)/galaxy_tool_repository:/var/www/html/sites/default/files/galaxy_tool_repository \
             -v $(pwd)/galaxy_tool_generator:/var/www/html/sites/all/modules/galaxy_tool_generator \
             -v $(pwd)/galaxy_tool_generator_ui:/var/www/html/sites/all/modules/galaxy_tool_generator_ui \
-            -v $(pwd)/blend4php:/var/www/html/sites/all/libraries/blend4php \
-            mingchen0919/docker-galaxy-tool-generator '/bin/bash'
+            mingchen0919/gtgdocker '/bin/bash'
    
 drush en -y galaxy_tool_generator galaxy_tool_generator_ui
 ```            
