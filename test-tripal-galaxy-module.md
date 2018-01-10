@@ -91,3 +91,8 @@ example: api to display bowtie2 xml for building webform components
 
 api/tools/toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.2.2
 api/tools/toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.2.2/build
+
+example: api to display workflow source
+
+http://127.0.0.1:8080/root?workflow_id=c9468fdb6dc5c5f1
+http://127.0.0.1:8080/api/workflows/c9468fdb6dc5c5f1
