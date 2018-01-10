@@ -63,7 +63,7 @@ docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
     -p 8080:80 -p 8021:21 -p 8022:22 \ 
     -e "ENABLE_TTS_INSTALL=True" \
     -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
-    mingchen0919/docker-galaxy-for-tripal-galaxy-demo /bin/bash
+    mingchen0919/docker-tripal-galaxy /bin/bash
 ```
 
 ## Obtain container IP address
