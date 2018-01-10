@@ -68,8 +68,8 @@ docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
 
 ## Login to Galaxy instance
 
-username: admin@galaxy.org
-password: admin
+* username: admin@galaxy.org
+* password: admin
 
 ## Obtain container IP address
 
