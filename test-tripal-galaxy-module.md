@@ -53,7 +53,6 @@ docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
     -p 8080:80 -p 8021:21 -p 8022:22 \
     -v $(pwd)/shed_tools:/export/shed_tools \ 
     -e "ENABLE_TTS_INSTALL=True" \
-    -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
     bgruening/galaxy-stable:17.01 /bin/bash
     
     
@@ -62,9 +61,13 @@ docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
 docker run -it --rm --network=tripal_galaxy_nw --name=galaxy_instance \
     -p 8080:80 -p 8021:21 -p 8022:22 \ 
     -e "ENABLE_TTS_INSTALL=True" \
-    -e "GALAXY_CONFIG_ADMIN_USERS=example@gmail.com" \
     mingchen0919/docker-tripal-galaxy /bin/bash
 ```
+
+## Login to Galaxy instance
+
+username: admin@galaxy.org
+password: admin
 
 ## Obtain container IP address
 
