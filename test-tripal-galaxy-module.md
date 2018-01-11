@@ -6,10 +6,10 @@ and remove everything from the local computer.
 
 
 ``` 
-mkdir -p ~/Desktop/test-tripal-galaxy && cd ~/Desktop/test-tripal-galaxy
+mkdir -p ~/Desktop/test-tripal-galaxy/custom_modules && cd ~/Desktop/test-tripal-galaxy
 
-git clone https://github.com/galaxyproject/blend4php.git
-git clone https://github.com/statonlab/tripal_galaxy.git
+git clone https://github.com/galaxyproject/blend4php.git custom_modules/blend4php
+git clone https://github.com/statonlab/tripal_galaxy.git custom_modules/tripal_galaxy
 
 # create a directory to mount to the docker container's tool directory so that I can update or debug tools from the host machine
 mkdir shed_tools
@@ -34,8 +34,8 @@ docker network create --driver bridge tripal_galaxy_nw
 
 ``` 
 docker run -it --rm --network=tripal_galaxy_nw --name=tripal_site \
-        -v $(pwd)/blend4php:/var/www/html/sites/all/libraries/blend4php \
-        -v $(pwd)/tripal_galaxy:/var/www/html/sites/all/modules/tripal_galaxy \
+        -v $(pwd)/custom_modules/blend4php:/var/www/html/sites/all/libraries/blend4php \
+        -v $(pwd)/custom_modules/tripal_galaxy:/var/www/html/sites/all/modules/tripal_galaxy \
         -p 80:80 mingchen0919/docker-tripal-v3 /bin/bash
         
 drush en tripal_galaxy -y
