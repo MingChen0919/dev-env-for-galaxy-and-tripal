@@ -9,7 +9,7 @@ and remove everything from the local computer.
 mkdir -p ~/Desktop/test-tripal-galaxy/custom_modules && cd ~/Desktop/test-tripal-galaxy
 
 git clone https://github.com/galaxyproject/blend4php.git custom_modules/blend4php
-git clone https://github.com/statonlab/tripal_galaxy.git custom_modules/tripal_galaxy
+git clone https://github.com/tripal/tripal_galaxy.git custom_modules/tripal_galaxy
 
 # create a directory to mount to the docker container's tool directory so that I can update or debug tools from the host machine
 mkdir shed_tools
